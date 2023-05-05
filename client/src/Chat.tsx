@@ -8,7 +8,7 @@ function Chat({ socket, username, room }) {
   const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
-        room: room,
+        room: "room",
         author: username,
         message: currentMessage,
         time:
@@ -35,7 +35,7 @@ function Chat({ socket, username, room }) {
 
   return (
     <div className="chat-window">
-      <div className="chat-header">
+      <div className="joinChatTitle">
         <p>Live Chat</p>
       </div>
       <div className="chat-body">
@@ -64,7 +64,7 @@ function Chat({ socket, username, room }) {
         <input
           type="text"
           value={currentMessage}
-          placeholder="Hey..."
+          placeholder="Your message..."
           onChange={(event) => {
             setCurrentMessage(event.target.value);
           }}
@@ -72,7 +72,7 @@ function Chat({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
+        <button onClick={sendMessage}>Send</button>
       </div>
     </div>
   );
